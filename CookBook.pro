@@ -35,7 +35,8 @@ SOURCES += main.cpp\
     recipe.cpp \
     searchrecipe.cpp \
     database.cpp \
-    dataprocessing.cpp
+    dataprocessing.cpp \
+    mainwidget.cpp
 
 HEADERS  += mainwindow.h \
     first.h \
@@ -49,5 +50,6 @@ HEADERS  += mainwindow.h \
     database.h \
     dataprocessing.h \
     mainwidget.h
+
 
 FORMS    += mainwindow.ui
