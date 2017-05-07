@@ -9,8 +9,6 @@ public:
     Q_OBJECT
     explicit dataProcessing(QObject *parent = 0);
  //   ~dataProcessing();
-public slots:
-    void createNewRecipe(); //Должен брать значение из ui
 private:
     Recipe *newRecipe;
 };

@@ -2,7 +2,7 @@
 #include <QtSql>
 #include <QDebug>
 
-dataProcessing::dataProcessing(QObject *parent) : Qbject(parent)
+dataProcessing::dataProcessing(QObject *parent) : QObject(parent)
 {
     QSqlDatabase dbase = QSqlDatabase::addDatabase("QSQLITE");
     dbase.setDatabaseName("mybd.sqlite");
@@ -20,6 +20,3 @@ dataProcessing::dataProcessing(QObject *parent) : Qbject(parent)
 //    }
 //}
 
-void dataProcessing::createNewRecipe(){
-    qDebug() << "Something happend";
-}

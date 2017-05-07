@@ -26,20 +26,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    first.cpp \
-    ingrbase.cpp \
     ingrlist.cpp \
     ingrrecipe.cpp \
     ingrsearch.cpp \
     lastrecipe.cpp \
     recipe.cpp \
     searchrecipe.cpp \
-    database.cpp \
     dataprocessing.cpp \
     mainwidget.cpp
 
 HEADERS  += mainwindow.h \
-    first.h \
     ingrbase.h \
     ingrlist.h \
     ingrrecipe.h \
@@ -47,7 +43,6 @@ HEADERS  += mainwindow.h \
     lastrecipe.h \
     recipe.h \
     searchrecipe.h \
-    database.h \
     dataprocessing.h \
     mainwidget.h
 
