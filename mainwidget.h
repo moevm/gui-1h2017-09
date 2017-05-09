@@ -9,6 +9,7 @@ class MainWidget : public QWidget
 public:
     explicit MainWidget(QWidget *parent = 0);
     void checkBoxGeneration(int n, QVector<int> list);
+public slots:
 
 };
 

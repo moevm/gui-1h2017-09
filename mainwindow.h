@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
+#include "recipewidget.h"
 namespace Ui {
 class MainWindow;
 }
@@ -15,7 +15,8 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-
+ public slots:
+    void add_last_rep(RecipeWidget *);
 private:
     Ui::MainWindow *ui;
 };

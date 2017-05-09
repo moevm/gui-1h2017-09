@@ -6,6 +6,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->scrollArea->setWidgetResizable(false);
+     ui->scrollAreaWidgetContents->setFixedSize(1000, 1000);
+
+}
+
+void MainWindow::add_last_rep(RecipeWidget * k){
+    ui->verticalLayout_last_rep->addWidget(k);
 }
 
 MainWindow::~MainWindow()

@@ -5,11 +5,16 @@ LastRecipe::LastRecipe(int last_n){
 
     if(query.exec())
     {
+        Loaded=true;
         while(query.next())
         {
+            qDebug() << "Init recipe";
             lastrecipe.push_back(new Recipe(&query));
+            qDebug() << "Init recipe widget";
+            recipe_w.push_back(new RecipeWidget(lastrecipe.last()->get_name(),QString::number(lastrecipe.last()->get_time()),lastrecipe.last()->get_descr()));
         }
     }else{
+        Loaded=false;
          qDebug() << "Error: SELECT last recipe \n";
     }
 }
@@ -61,4 +66,12 @@ int LastRecipe::get_cout_lastrecipe(){
 
 Recipe* LastRecipe::get_lastrecipe(int i){
     return lastrecipe[i];
+}
+
+
+LastRecipe::~LastRecipe(){
+    for(Recipe * i :lastrecipe)
+        delete i;
+    for(RecipeWidget * i :recipe_w)
+        delete i;
 }
