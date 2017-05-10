@@ -47,6 +47,9 @@
    <property name="text">
     <string>Название</string>
    </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QLabel" name="label_dscr">
    <property name="geometry">
@@ -70,6 +73,9 @@
    </property>
    <property name="text">
     <string>Описание</string>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QLabel" name="label_pic">
@@ -127,6 +133,12 @@
    <property name="text">
     <string>Текст рецепта</string>
    </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+   <property name="textInteractionFlags">
+    <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+   </property>
   </widget>
   <widget class="QPushButton" name="Button_chg">
    <property name="geometry">
@@ -163,6 +175,9 @@
    </property>
    <property name="text">
     <string>Время</string>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QLabel" name="label_ingr">

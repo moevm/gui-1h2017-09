@@ -2,7 +2,7 @@
 #include <QDebug>
 
 
-Recipe::Recipe(QSqlQuery *query)//скачивает с помощью query в текущей позиции
+Recipe::Recipe(QSqlQuery *query, QObject *parent): QObject(parent)//скачивает с помощью query в текущей позиции
 {
     QSqlRecord rec=query->record();
     id=query->value(rec.indexOf("id")).toInt();
@@ -11,9 +11,12 @@ Recipe::Recipe(QSqlQuery *query)//скачивает с помощью query в 
     time=query->value(rec.indexOf("time")).toInt();
     img=query->value(rec.indexOf("picture")).toString();
     text=query->value(rec.indexOf("text")).toString();
+    qDebug()<< text;
     ingr=new IngrRecipe(id);
+    //init_widgets(this);
+    //init_signals();
 }
-Recipe::Recipe(int idd,QString nm, QString d,int t,QString i,QString txt)//создает уже существующий рецепт, добавляет сам свои ингр
+Recipe::Recipe(int idd,QString nm, QString d,int t,QString i,QString txt,QObject *parent): QObject(parent)//создает уже существующий рецепт, добавляет сам свои ингр
 {
     id=idd;
     name=nm;
@@ -22,8 +25,12 @@ Recipe::Recipe(int idd,QString nm, QString d,int t,QString i,QString txt)//со�
     img=i;
     text=txt;
     ingr=new IngrRecipe(id);
+
+
+    //init_widgets(this);
+    //init_signals();
 }
-Recipe::Recipe(QString nm, QString d,int t,QString i,QString txt,QVector<QString> in)//создает новый
+Recipe::Recipe(QString nm, QString d, int t, QString i, QString txt, QVector<QString> in, QObject *parent): QObject(parent)//создает новый
 {
     query.prepare("INSERT INTO Recipe (name,description,time,picture,text) VALUES (:name,:descr,:time,:pic,:txt)");
         query.bindValue(":name",nm);
@@ -54,6 +61,10 @@ Recipe::Recipe(QString nm, QString d,int t,QString i,QString txt,QVector<QString
                 ingr=new IngrRecipe(id,in);
             }
             qDebug() <<"rep"  <<  " insert rep\n";
+
+            //init_widgets(this);
+            //init_signals();
+
         }
 }
 void Recipe::get_id(){
@@ -76,7 +87,20 @@ void Recipe::get_id(){
         qDebug() <<   "rep"  <<  "select get id\n";
         }
     }
+}
 
+void Recipe::init_signals(){
+    //qDebug() << "init signals " << '\n' << "send init";
+    init_widgets(this);
+    get_names(name);
+    get_descrs(descr);
+    get_times(QString::number(time));
+    get_txts(text);
+    get_imgs(img);
+    for(int i=0;i<ingr->get_cout();i++)
+    {
+        get_ingrs(ingr->get_ingr(i));
+    }
 }
 QString Recipe::get_name(){
     return name;

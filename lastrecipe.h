@@ -2,12 +2,14 @@
 #define LASTRECIPE_H
 #include <QVector>
 #include <QString>
+#include <QObject>
 #include "recipe.h"
 #include <recipewidget.h>
 
 
-class LastRecipe
+class LastRecipe : public QObject
 {
+        Q_OBJECT
     QSqlQuery query;
     QVector<Recipe*>lastrecipe;
     QVector<int> opened_recipe;
@@ -18,7 +20,7 @@ class LastRecipe
     void push_opened(int i);
     int get_cout_lastrecipe();
     Recipe* get_lastrecipe(int i);
-    LastRecipe(int last_n);
+    explicit LastRecipe(int last_n=3,QObject *parent = 0);
     ~LastRecipe();
 };
 

@@ -25,11 +25,20 @@
   <property name="cursor">
    <cursorShape>PointingHandCursor</cursorShape>
   </property>
+  <property name="mouseTracking">
+   <bool>false</bool>
+  </property>
   <property name="focusPolicy">
    <enum>Qt::ClickFocus</enum>
   </property>
+  <property name="contextMenuPolicy">
+   <enum>Qt::ActionsContextMenu</enum>
+  </property>
   <property name="windowTitle">
    <string>Frame</string>
+  </property>
+  <property name="whatsThis">
+   <string/>
   </property>
   <property name="autoFillBackground">
    <bool>false</bool>
@@ -120,7 +129,7 @@
     <rect>
      <x>220</x>
      <y>10</y>
-     <width>331</width>
+     <width>181</width>
      <height>31</height>
     </rect>
    </property>
@@ -191,6 +200,19 @@
    </property>
    <property name="text">
     <string>Время</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Button_open">
+   <property name="geometry">
+    <rect>
+     <x>420</x>
+     <y>10</y>
+     <width>161</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Открыть</string>
    </property>
   </widget>
  </widget>

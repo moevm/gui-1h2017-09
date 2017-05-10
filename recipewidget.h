@@ -14,11 +14,16 @@ class RecipeWidget : public QFrame
 
 public:
      explicit RecipeWidget( QString name,QString time,QString dscr,QWidget *parent = Q_NULLPTR, Qt::WindowFlags f = Qt::WindowFlags());
+     explicit RecipeWidget(QWidget *parent = Q_NULLPTR, Qt::WindowFlags f = Qt::WindowFlags());
     ~RecipeWidget();
 public slots:
     void set_name(QString n);
     void set_time(QString n);
     void set_dscr(QString n);
+    void set_pic(QString n);
+    void clicked_open();
+signals:
+    void open_full_widget();
 private:
     Ui::RecipeWidget *ui;
 };

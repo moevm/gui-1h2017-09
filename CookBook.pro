@@ -35,7 +35,8 @@ SOURCES += main.cpp\
     dataprocessing.cpp \
     mainwidget.cpp \
     recipewidget.cpp \
-    recipefullwidget.cpp
+    recipefullwidget.cpp \
+    searchform.cpp
 
 HEADERS  += mainwindow.h \
     ingrbase.h \
@@ -48,9 +49,11 @@ HEADERS  += mainwindow.h \
     dataprocessing.h \
     mainwidget.h \
     recipewidget.h \
-    recipefullwidget.h
+    recipefullwidget.h \
+    searchform.h
 
 
 FORMS    += mainwindow.ui \
     recipewidget.ui \
-    recipefullwidget.ui
+    recipefullwidget.ui \
+    searchform.ui

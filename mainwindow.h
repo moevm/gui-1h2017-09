@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include "recipewidget.h"
+#include "recipefullwidget.h"
+#include "recipe.h"
 namespace Ui {
 class MainWindow;
 }
@@ -16,8 +18,10 @@ public:
     ~MainWindow();
 
  public slots:
-    void add_last_rep(RecipeWidget *);
+    void add_last_rep(Recipe *);
 private:
+    QVector <RecipeWidget *> last_w;
+    QVector <RecipeFullWidget *> full_rep;
     Ui::MainWindow *ui;
 };
 

@@ -1,5 +1,6 @@
 #include "lastrecipe.h"
-LastRecipe::LastRecipe(int last_n){
+LastRecipe::LastRecipe(int last_n,QObject *parent): QObject(parent)
+{
     query.prepare("SELECT * FROM last_recipe INNER JOIN recipe ON last_recipe.id_rep = recipe.id ORDER BY inc DESC LIMIT :count");
     query.bindValue(":count",QString::number(last_n));
 
@@ -10,8 +11,8 @@ LastRecipe::LastRecipe(int last_n){
         {
             qDebug() << "Init recipe";
             lastrecipe.push_back(new Recipe(&query));
-            qDebug() << "Init recipe widget";
-            recipe_w.push_back(new RecipeWidget(lastrecipe.last()->get_name(),QString::number(lastrecipe.last()->get_time()),lastrecipe.last()->get_descr()));
+           // qDebug() << "Init recipe widget";
+           // recipe_w.push_back(new RecipeWidget(lastrecipe.last()->get_name(),QString::number(lastrecipe.last()->get_time()),lastrecipe.last()->get_descr()));
         }
     }else{
         Loaded=false;
