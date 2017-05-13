@@ -4,17 +4,23 @@
 #include "dataprocessing.h"
 #include "recipewidget.h"
 #include "searchform.h"
+#include "ingrlist.h"
 #include <QObject>
 #include <QWidget>
 #include <QDebug>
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+    MainWindow w;
+    dataProcessing* mai= new dataProcessing();\
+    // !!!!!!!!!!
+    Ingredients i;
     SearchForm f;
-    f.show();
-
-    //MainWindow w;
-    //dataProcessing* mai= new dataProcessing(&w,NULL);
+     QObject::connect(&i,SIGNAL(get_ingrs(QString)),&f,SLOT(set_name_ingr(QString)));
+      QObject::connect(&f,SIGNAL(get_all_ingr()),&i,SLOT(get_all_ingr()));
+      f.get_all_ingr();
+        f.show();
+    // !!!!!
 
     //MainWindow w;
    // RecipeWidget testr;
@@ -33,7 +39,7 @@ int main(int argc, char *argv[])
     //mai.start();
 
     //testr.show();
-   // w.show();
+   w.show();
 
     return a.exec();
 }

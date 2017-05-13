@@ -1,6 +1,6 @@
 #include "ingrlist.h"
 #include <QtAlgorithms>
-Ingredients::Ingredients()
+Ingredients::Ingredients(QObject *parent): QObject(parent)
 {
     if(!init())
     {
@@ -8,6 +8,13 @@ Ingredients::Ingredients()
     }
 
 }
+
+void Ingredients::get_all_ingr(){
+    for(QString i:ingr){
+        get_ingrs(i);
+    }
+}
+
 bool Ingredients::init(){
     if(query.exec("SELECT name_ingr FROM  Name_ingredients"))
     {

@@ -11,7 +11,7 @@ class dataProcessing : public QObject
     Q_OBJECT
 public:
     explicit dataProcessing(QObject *parent = 0);
-    explicit dataProcessing(MainWindow * w,QObject *parent = 0);
+    explicit dataProcessing(MainWindow * w,QObject *parent);
     ~dataProcessing();
      LastRecipe * last_rep;
      void start();

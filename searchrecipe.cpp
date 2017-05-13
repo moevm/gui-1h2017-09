@@ -1,6 +1,6 @@
 #include "searchrecipe.h"
 
-SearchRecipe::SearchRecipe()
+SearchRecipe::SearchRecipe(QObject *parent): QObject(parent)
 {
     name="";
     time=0;
@@ -13,6 +13,24 @@ void SearchRecipe::set_name(QString n){
 }
 void SearchRecipe::set_time(int t){
     time=t;
+}
+
+void SearchRecipe::set_ingr(QString n){
+    ingr->add_ingr(n);
+}
+void SearchRecipe::start_search(){
+    reset();
+}
+void SearchRecipe::end_transact(){
+    if(search()){
+         qDebug() << "Search Yes";
+         for(Recipe *i:search_rep){
+             get_found_recipe(i);
+         }
+    }else
+    {
+        qDebug() << "Error: Search not performed";
+    }
 }
 bool SearchRecipe::search(){
     //обработка по ингредиентам

@@ -2,9 +2,10 @@
 #define INGREDIENTS_H
 
 #include "ingrbase.h"
+#include <QObject>
 
-
-class Ingredients {//пока только для  основных ингредиентов.
+class Ingredients :public QObject{//пока только для  основных ингредиентов.
+    Q_OBJECT
 private:
     QSqlQuery query;
    QVector<QString> ingr;
@@ -16,6 +17,10 @@ public:
      void delete_ingr(int i);
     QString get_ingr(int i);
     int get_cout();
-    Ingredients();
+    explicit Ingredients(QObject *parent = 0);
+public slots:
+    void get_all_ingr();
+signals:
+    void get_ingrs(QString);
 };
 #endif // INGREDIENTS_H

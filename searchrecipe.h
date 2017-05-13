@@ -3,22 +3,31 @@
 #include <QVector>
 #include <QString>
 #include <QtSql>
+#include <QObject>
 #include <recipe.h>
 #include <ingrsearch.h>
 
-class SearchRecipe
+class SearchRecipe : public QObject
 {
+   Q_OBJECT
         QSqlQuery query;
     QVector<Recipe *> search_rep;
     QString name;
     int time;
 public:
     IngrSearch* ingr;
-    void set_name(QString n);
+public slots:
+    void set_name(QString);
     void set_time(int t);
-    bool search();
+    void set_ingr(QString);
+    void start_search();
+    void end_transact();
+signals:
+    void get_found_recipe(Recipe *);
+public:
     void reset();
-    SearchRecipe();
+    bool search();
+     explicit SearchRecipe(QObject *parent = 0);
     ~SearchRecipe();
 };
 
