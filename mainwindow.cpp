@@ -12,6 +12,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->scrollArea->setWidgetResizable(false);
      ui->scrollAreaWidgetContents->setFixedSize(1000, 1000);
 
+    search= new SearchForm(ui->frame);
+    //ui->searchWidget->layout()->addWidget(search);
+
+
 }
 
 void MainWindow::add_last_rep(Recipe * l){

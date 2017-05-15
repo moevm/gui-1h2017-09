@@ -9,13 +9,16 @@ SearchRecipe::SearchRecipe(QObject *parent): QObject(parent)
 }
 
 void SearchRecipe::set_name(QString n){
+    qDebug() << "set name: /'" << n << "/'";
     name=n;
 }
-void SearchRecipe::set_time(int t){
-    time=t;
+void SearchRecipe::set_time(QString t){
+    qDebug() << "set time: /'" << t << "/'";
+    time=t.toInt();
 }
 
 void SearchRecipe::set_ingr(QString n){
+    qDebug() << "set ingr: /'" << n << "/'";
     ingr->add_ingr(n);
 }
 void SearchRecipe::start_search(){
@@ -24,8 +27,10 @@ void SearchRecipe::start_search(){
 void SearchRecipe::end_transact(){
     if(search()){
          qDebug() << "Search Yes";
+         qDebug() << "found recipe: " << search_rep.size();
          for(Recipe *i:search_rep){
              get_found_recipe(i);
+             i->init_signals();
          }
     }else
     {
@@ -64,7 +69,7 @@ bool SearchRecipe::search(){
 
     query.prepare("Select * from recipe where name like :n and time <= :t "+str_sel_ingr);// :filtr_ingr
     //обработка по времени и имени
-    if(name!="")
+    if(name!="" && name!=" ")
     {
         query.bindValue(":n",name);
     }else{

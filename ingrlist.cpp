@@ -4,7 +4,12 @@ Ingredients::Ingredients(QObject *parent): QObject(parent)
 {
     if(!init())
     {
+        Loaded= false;
         qDebug() << "List ingrdients: error download\n";
+    }else
+    {
+        Loaded= true;
+        qDebug() << "Ingredients list loaded: " << ingr.size();
     }
 
 }

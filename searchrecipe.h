@@ -18,7 +18,7 @@ public:
     IngrSearch* ingr;
 public slots:
     void set_name(QString);
-    void set_time(int t);
+    void set_time(QString);
     void set_ingr(QString);
     void start_search();
     void end_transact();

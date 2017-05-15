@@ -4,15 +4,15 @@
 
 dataProcessing::dataProcessing(MainWindow  * w,QObject *parent) : QObject(parent)
 {
-    QSqlDatabase dbase = QSqlDatabase::addDatabase("QSQLITE");
-    dbase.setDatabaseName("mybd.sqlite");
-    if (!dbase.open()) {
-        qDebug() << "Dont open db";
+    //QSqlDatabase dbase = QSqlDatabase::addDatabase("QSQLITE");
+   // dbase.setDatabaseName("mybd.sqlite");
+    //if (!dbase.open()) {
+    //    qDebug() << "Dont open db";
 
-    }else
-    {
+   // }else
+   // {
         qDebug() << "Open db";
-        last_rep=new LastRecipe();
+        last_rep=new LastRecipe(1);
         //инициализируем сигналы пока здесь
         //connect(last_rep->get_lastrecipe(i),SIGNAL(init_widgets(Recipe*)),w,SLOT(add_last_rep(Recipe*)));
         for(int i=0;i<last_rep->get_cout_lastrecipe();i++){
@@ -22,7 +22,7 @@ dataProcessing::dataProcessing(MainWindow  * w,QObject *parent) : QObject(parent
              connect(last_rep->get_lastrecipe(i),SIGNAL(init_widgets(Recipe*)),w,SLOT(add_last_rep(Recipe*)));
             last_rep->get_lastrecipe(i)->init_signals();
         }
-    }
+   // }
 }
 
 

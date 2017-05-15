@@ -3,6 +3,8 @@
 #include "recipe.h"
 #include "recipefullwidget.h"
 #include "recipewidget.h"
+#include "ingrlist.h"
+#include "searchrecipe.h"
 #include <QVector>
 #include <QFrame>
 #include <QString>
@@ -31,6 +33,8 @@ signals:
     void end_transact();
 
 private:
+    Ingredients* ingrlist;
+    SearchRecipe* search;
     QVector<QCheckBox *> name_ingr;
     QVector<RecipeWidget *> rep_w;
     QVector<RecipeFullWidget *> full_rep;

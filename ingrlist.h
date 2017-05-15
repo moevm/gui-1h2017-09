@@ -12,6 +12,7 @@ private:
     bool init(void);
 
 public:
+    bool Loaded;
     void add_ingr(QString name);
     void delete_ingr(QString name);
      void delete_ingr(int i);
