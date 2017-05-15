@@ -14,6 +14,7 @@ LastRecipe::LastRecipe(int last_n,QObject *parent): QObject(parent)
            // qDebug() << "Init recipe widget";
            // recipe_w.push_back(new RecipeWidget(lastrecipe.last()->get_name(),QString::number(lastrecipe.last()->get_time()),lastrecipe.last()->get_descr()));
         }
+
     }else{
         Loaded=false;
          qDebug() << "Error: SELECT last recipe \n";
@@ -51,26 +52,34 @@ bool LastRecipe::update_last(){
      }*/
      return true;
 }
-void LastRecipe::push_opened(int i){
-   if(opened_recipe.indexOf(i)!=-1){
-        opened_recipe.remove(opened_recipe.indexOf(i));
-   }
-   opened_recipe.push_back(i);
-}
+
 
 
 int LastRecipe::get_cout_lastrecipe(){
     return lastrecipe.size();
 }
 
-
+void LastRecipe::opened(int i){
+    qDebug() << "opened " << i;
+    if(opened_recipe.indexOf(i)!=-1){
+         opened_recipe.remove(opened_recipe.indexOf(i));
+    }
+    opened_recipe.push_back(i);
+}
 
 Recipe* LastRecipe::get_lastrecipe(int i){
     return lastrecipe[i];
 }
 
+void LastRecipe::get_rep(){
+    for(Recipe *i:lastrecipe){
+        get_last_recipe(i);
+        i->init_signals();
+    }
+}
 
 LastRecipe::~LastRecipe(){
+    update_last();
     for(Recipe * i :lastrecipe)
         delete i;
     for(RecipeWidget * i :recipe_w)

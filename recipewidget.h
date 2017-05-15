@@ -3,7 +3,7 @@
 
 #include <QFrame>
 #include <QWidget>
-
+#include <recipe.h>
 namespace Ui {
 class RecipeWidget;
 }
@@ -13,7 +13,7 @@ class RecipeWidget : public QFrame
     Q_OBJECT
 
 public:
-     explicit RecipeWidget( QString name,QString time,QString dscr,QWidget *parent = Q_NULLPTR, Qt::WindowFlags f = Qt::WindowFlags());
+     explicit RecipeWidget( Recipe * p,QWidget *parent = Q_NULLPTR, Qt::WindowFlags f = Qt::WindowFlags());
      explicit RecipeWidget(QWidget *parent = Q_NULLPTR, Qt::WindowFlags f = Qt::WindowFlags());
     ~RecipeWidget();
 public slots:

@@ -97,6 +97,7 @@ void Recipe::init_signals(){
     get_times(QString::number(time));
     get_txts(text);
     get_imgs(img);
+    get_ids(id);
     for(int i=0;i<ingr->get_cout();i++)
     {
         get_ingrs(ingr->get_ingr(i));

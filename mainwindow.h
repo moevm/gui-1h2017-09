@@ -2,10 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "recipewidget.h"
-#include "recipefullwidget.h"
 #include "recipe.h"
 #include "searchform.h"
+#include "lastrepform.h"
 namespace Ui {
 class MainWindow;
 }
@@ -19,11 +18,10 @@ public:
     ~MainWindow();
 
  public slots:
-    void add_last_rep(Recipe *);
+
 private:
     SearchForm* search;
-    QVector <RecipeWidget *> last_w;
-    QVector <RecipeFullWidget *> full_rep;
+    LastRepform* last_rep;
     Ui::MainWindow *ui;
 };
 

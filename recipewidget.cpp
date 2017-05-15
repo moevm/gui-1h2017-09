@@ -4,13 +4,14 @@
 #include <QDebug>
 
 
-RecipeWidget::RecipeWidget( QString name,QString time,QString dscr,QWidget *parent, Qt::WindowFlags f) :QFrame(parent),
+RecipeWidget::RecipeWidget(Recipe *l ,QWidget *parent, Qt::WindowFlags f) :QFrame(parent),
     ui(new Ui::RecipeWidget)
 {
     ui->setupUi(this);
-    ui->label_name->setText(name);
-    ui->label_time->setText(time + " мин");
-    ui->label_dscr->setText(dscr);
+    connect(l,SIGNAL(get_descrs(QString)),this,SLOT(set_dscr(QString)));
+    connect(l,SIGNAL(get_names(QString)),this,SLOT(set_name(QString)));
+    connect(l,SIGNAL(get_times(QString)),this,SLOT(set_time(QString)));
+     connect(l,SIGNAL(get_imgs(QString)),this,SLOT(set_pic(QString)));
 }
 
 

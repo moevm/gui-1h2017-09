@@ -24,6 +24,7 @@ public slots:
     void set_name_ingr(QString);
     void add_found_rep(Recipe *);
     void clicked_search();
+    void get_count(int);
 signals:
     void selected_ingr(QString);
     void select_name(QString);

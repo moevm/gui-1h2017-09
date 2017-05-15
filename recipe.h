@@ -51,6 +51,7 @@ signals:
     void get_txts(QString );
     void get_ingrs(QString);
     void get_times(QString);
+    void get_ids(int);
     void init_widgets(Recipe *);
 };
 

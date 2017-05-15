@@ -23,6 +23,7 @@ public slots:
     void start_search();
     void end_transact();
 signals:
+    void get_count(int);
     void get_found_recipe(Recipe *);
 public:
     void reset();

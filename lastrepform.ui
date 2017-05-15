@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>SearchForm</class>
- <widget class="QFrame" name="SearchForm">
+ <class>LastRepform</class>
+ <widget class="QFrame" name="LastRepform">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>794</width>
-    <height>481</height>
+    <width>770</width>
+    <height>490</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,86 +19,13 @@
   <property name="frameShadow">
    <enum>QFrame::Raised</enum>
   </property>
-  <widget class="QPushButton" name="Button_search">
+  <widget class="QScrollArea" name="scrollArea">
    <property name="geometry">
     <rect>
-     <x>550</x>
-     <y>20</y>
-     <width>91</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Найти</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit_name">
-   <property name="geometry">
-    <rect>
-     <x>80</x>
-     <y>20</y>
-     <width>451</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="statusTip">
-    <string/>
-   </property>
-   <property name="whatsThis">
-    <string/>
-   </property>
-   <property name="placeholderText">
-    <string>Введите имя рецепта</string>
-   </property>
-  </widget>
-  <widget class="QScrollArea" name="scrollArea_ingr">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>90</y>
-     <width>151</width>
-     <height>380</height>
-    </rect>
-   </property>
-   <property name="verticalScrollBarPolicy">
-    <enum>Qt::ScrollBarAsNeeded</enum>
-   </property>
-   <property name="widgetResizable">
-    <bool>true</bool>
-   </property>
-   <widget class="QWidget" name="scrollAreaWidgetContents_2">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>149</width>
-      <height>378</height>
-     </rect>
-    </property>
-    <widget class="QWidget" name="verticalLayoutWidget">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>0</y>
-       <width>141</width>
-       <height>381</height>
-      </rect>
-     </property>
-     <layout class="QVBoxLayout" name="verticalLayout_ingr">
-      <property name="rightMargin">
-       <number>0</number>
-      </property>
-     </layout>
-    </widget>
-   </widget>
-  </widget>
-  <widget class="QScrollArea" name="scrollArea_rep">
-   <property name="geometry">
-    <rect>
-     <x>180</x>
-     <y>90</y>
-     <width>601</width>
-     <height>381</height>
+     <x>20</x>
+     <y>50</y>
+     <width>731</width>
+     <height>431</height>
     </rect>
    </property>
    <property name="sizePolicy">
@@ -139,8 +66,8 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>599</width>
-      <height>379</height>
+      <width>729</width>
+      <height>429</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -160,11 +87,11 @@
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>591</width>
+       <width>721</width>
        <height>691</height>
       </rect>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout_rep">
+     <layout class="QVBoxLayout" name="verticalLayout_last_rep">
       <property name="spacing">
        <number>15</number>
       </property>
@@ -187,16 +114,13 @@
     </widget>
    </widget>
   </widget>
-  <widget class="QLabel" name="label_n">
-   <property name="enabled">
-    <bool>true</bool>
-   </property>
+  <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>190</x>
-     <y>60</y>
-     <width>141</width>
-     <height>21</height>
+     <x>310</x>
+     <y>0</y>
+     <width>161</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="font">
@@ -205,28 +129,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Найдено рецептов:</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_num">
-   <property name="enabled">
-    <bool>true</bool>
-   </property>
-   <property name="geometry">
-    <rect>
-     <x>340</x>
-     <y>60</y>
-     <width>71</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>0</string>
+    <string>Последние рецепты</string>
    </property>
   </widget>
  </widget>

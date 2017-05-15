@@ -28,6 +28,7 @@ void SearchRecipe::end_transact(){
     if(search()){
          qDebug() << "Search Yes";
          qDebug() << "found recipe: " << search_rep.size();
+         get_count(search_rep.size());
          for(Recipe *i:search_rep){
              get_found_recipe(i);
              i->init_signals();

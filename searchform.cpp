@@ -20,30 +20,34 @@ SearchForm::SearchForm(QWidget *parent) :
       connect(this,SIGNAL(selected_ingr(QString)),search,SLOT(set_ingr(QString)));
       connect(this,SIGNAL(selected_end()),search,SLOT(start_search()));
       connect(this,SIGNAL(end_transact()),search,SLOT(end_transact()));
+      connect(search,SIGNAL(get_count(int)),this,SLOT(get_count(int)));
 
 
+      ui->label_n->setVisible(false);
+      ui->label_num->setVisible(false);
     ui->scrollArea_ingr->setWidgetResizable(false);
      ui->scrollArea_rep->setWidgetResizable(false);
      ui->scrollAreaWidgetContents_2->setFixedSize(170, 1000);
      ui->scrollAreaWidgetContents->setFixedSize(710, 2000);
      connect(ui->Button_search,SIGNAL(clicked()),this,SLOT(clicked_search()));
-
-
-
-
 }
 
 void SearchForm::set_name_ingr(QString n){
     name_ingr.push_back(new QCheckBox(n,this));
     ui->verticalLayout_ingr->addWidget(name_ingr.last());
 }
+void SearchForm::get_count(int i){
+    ui->label_n->setVisible(true);
+    ui->label_num->setVisible(true);
+    ui->label_num->setText(QString::number(i));
+}
 
 void SearchForm::clicked_search(){
     for(RecipeWidget * i:rep_w)
      {
          delete i;
-         rep_w.removeOne(i);
      }
+rep_w.clear();
     selected_end();
     select_name(ui->lineEdit_name->text());
     for(QCheckBox * i:name_ingr){
@@ -67,34 +71,24 @@ void SearchForm::clicked_search(){
 
 
 void SearchForm::add_found_rep(Recipe * l){
-   // qDebug() << "slots add found";
-    //ui->verticalLayout_last_rep->addWidget(k);
-    rep_w.push_back(new RecipeWidget(this));
-    full_rep.push_back(new RecipeFullWidget());
-    //для мини формата
-    connect(l,SIGNAL(get_descrs(QString)),rep_w.last(),SLOT(set_dscr(QString)));
-    connect(l,SIGNAL(get_names(QString)),rep_w.last(),SLOT(set_name(QString)));
-    connect(l,SIGNAL(get_times(QString)),rep_w.last(),SLOT(set_time(QString)));
-     connect(l,SIGNAL(get_imgs(QString)),rep_w.last(),SLOT(set_pic(QString)));
-
-
-     //для полного формата
-     connect(l,SIGNAL(get_descrs(QString)),full_rep.last(),SLOT(set_dscr(QString)));
-     connect(l,SIGNAL(get_names(QString)),full_rep.last(),SLOT(set_name(QString)));
-     connect(l,SIGNAL(get_times(QString)),full_rep.last(),SLOT(set_time(QString)));
-      connect(l,SIGNAL(get_imgs(QString)),full_rep.last(),SLOT(set_pic(QString)));
-      connect(l,SIGNAL(get_txts(QString)),full_rep.last(),SLOT(set_txt(QString)));
-       connect(l,SIGNAL(get_ingrs(QString)),full_rep.last(),SLOT(set_ingr(QString)));
-
+    rep_w.push_back(new RecipeWidget(l,this));
+    full_rep.push_back(new RecipeFullWidget(l));
      //связь виджетов
        connect(rep_w.last(),SIGNAL(open_full_widget()),full_rep.last(),SLOT(show()));
-
      ui->verticalLayout_rep->addWidget(rep_w.last());
-     //qDebug() << "init widget";
+
 }
 
 
 SearchForm::~SearchForm()
 {
+    delete ingrlist;
+    delete search;
+    for(QCheckBox * i :name_ingr)
+        delete i;
+    for(RecipeWidget * i :rep_w)
+        delete i;
+    for(RecipeFullWidget * i :full_rep)
+        delete i;
     delete ui;
 }
