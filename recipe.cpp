@@ -11,7 +11,7 @@ Recipe::Recipe(QSqlQuery *query, QObject *parent): QObject(parent)//скачив
     time=query->value(rec.indexOf("time")).toInt();
     img=query->value(rec.indexOf("picture")).toString();
     text=query->value(rec.indexOf("text")).toString();
-    qDebug()<< text;
+    //qDebug()<< text;
     ingr=new IngrRecipe(id);
     //init_widgets(this);
     //init_signals();

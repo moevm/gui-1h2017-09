@@ -12,6 +12,8 @@ RecipeWidget::RecipeWidget(Recipe *l ,QWidget *parent, Qt::WindowFlags f) :QFram
     connect(l,SIGNAL(get_names(QString)),this,SLOT(set_name(QString)));
     connect(l,SIGNAL(get_times(QString)),this,SLOT(set_time(QString)));
      connect(l,SIGNAL(get_imgs(QString)),this,SLOT(set_pic(QString)));
+
+     connect(ui->Button_open,SIGNAL(clicked(bool)),this,SLOT(clicked_open()));
 }
 
 
@@ -25,19 +27,21 @@ RecipeWidget::RecipeWidget(QWidget *parent, Qt::WindowFlags f) :QFrame(parent),
 
 void RecipeWidget::set_name(QString n){
     ui->label_name->setText(n);
-    //qDebug() <<  this << "name  " << n ;
 }
 void RecipeWidget::set_time(QString n){
     ui->label_time->setText(n+  " мин");
-    //qDebug() <<  this << "time  " << n ;
 }
 void RecipeWidget::set_dscr(QString n){
     ui->label_dscr->setText(n);
-   // qDebug() <<  this << "dscr " << n ;
 }
 
 void RecipeWidget::set_pic(QString n){
-   // RecipeWidget::void clicked_open();ui->label_dscr->setText(n);
+    pic=new QPixmap();
+    if(!pic->load(n)){
+        pic->load("i_default.jpg");
+    }
+
+   ui->label_pic->setPixmap(*pic);
 }
 
 void RecipeWidget::clicked_open(){

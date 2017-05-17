@@ -9,16 +9,16 @@ SearchRecipe::SearchRecipe(QObject *parent): QObject(parent)
 }
 
 void SearchRecipe::set_name(QString n){
-    qDebug() << "set name: /'" << n << "/'";
+    //qDebug() << "set name: /'" << n << "/'";
     name=n;
 }
 void SearchRecipe::set_time(QString t){
-    qDebug() << "set time: /'" << t << "/'";
+    //qDebug() << "set time: /'" << t << "/'";
     time=t.toInt();
 }
 
 void SearchRecipe::set_ingr(QString n){
-    qDebug() << "set ingr: /'" << n << "/'";
+   // qDebug() << "set ingr: /'" << n << "/'";
     ingr->add_ingr(n);
 }
 void SearchRecipe::start_search(){

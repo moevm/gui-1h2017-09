@@ -3,7 +3,7 @@
 
 #include <QWidget>
 #include <recipe.h>
-
+#include <QPixmap>
 namespace Ui {
 class RecipeFullWidget;
 }
@@ -30,6 +30,8 @@ signals:
 
 
 private:
+
+    QPixmap *pic;
     int id;
     Ui::RecipeFullWidget *ui;
 };

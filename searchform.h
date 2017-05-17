@@ -4,6 +4,7 @@
 #include "recipefullwidget.h"
 #include "recipewidget.h"
 #include "ingrlist.h"
+#include "lastrecipe.h"
 #include "searchrecipe.h"
 #include <QVector>
 #include <QFrame>
@@ -18,6 +19,7 @@ class SearchForm : public QFrame
     Q_OBJECT
 
 public:
+    explicit SearchForm(LastRecipe * last_m,QWidget *parent = 0);
     explicit SearchForm(QWidget *parent = 0);
     ~SearchForm();
 public slots:
@@ -34,6 +36,7 @@ signals:
     void end_transact();
 
 private:
+    LastRecipe * last_manager;
     Ingredients* ingrlist;
     SearchRecipe* search;
     QVector<QCheckBox *> name_ingr;

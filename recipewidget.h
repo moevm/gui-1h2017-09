@@ -3,6 +3,7 @@
 
 #include <QFrame>
 #include <QWidget>
+#include <QPixmap>
 #include <recipe.h>
 namespace Ui {
 class RecipeWidget;
@@ -25,6 +26,7 @@ public slots:
 signals:
     void open_full_widget();
 private:
+    QPixmap *pic;
     Ui::RecipeWidget *ui;
 };
 

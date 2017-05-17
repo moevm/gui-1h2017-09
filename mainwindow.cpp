@@ -9,8 +9,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    search= new SearchForm(ui->frame_search);
-    last_rep=new LastRepform(ui->frame_start);
+    last_manager =new LastRecipe(0);
+    search= new SearchForm(last_manager,ui->frame_search);
+    last_rep=new LastRepform(last_manager,ui->frame_start);
     //ui->searchWidget->layout()->addWidget(search);
 
 
@@ -20,6 +21,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
+    delete last_manager;
     delete ui;
 }
 

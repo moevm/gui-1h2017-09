@@ -19,7 +19,7 @@ RecipeFullWidget::RecipeFullWidget(Recipe * l ,QWidget *parent) :
      connect(l,SIGNAL(get_imgs(QString)),this,SLOT(set_pic(QString)));
      connect(l,SIGNAL(get_txts(QString)),this,SLOT(set_txt(QString)));
       connect(l,SIGNAL(get_ingrs(QString)),this,SLOT(set_ingr(QString)));
-       connect(l,SIGNAL(get_ids(int)),this,SLOT(set_id(int));
+       connect(l,SIGNAL(get_ids(int)),this,SLOT(set_id(int)));
 
 }
 
@@ -39,7 +39,12 @@ void RecipeFullWidget::set_dscr(QString n){
 }
 
 void RecipeFullWidget::set_pic(QString n){
-   // ui->label_dscr->setText(n);
+    pic=new QPixmap();
+    if(!pic->load(n)){
+        pic->load("i_default.jpg");
+    }
+
+   ui->label_pic->setPixmap(*pic);
 }
 void RecipeFullWidget::set_txt(QString n){
     ui->label_text->setText(n);

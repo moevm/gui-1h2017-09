@@ -5,6 +5,7 @@
 #include "recipe.h"
 #include "searchform.h"
 #include "lastrepform.h"
+#include "lastrecipe.h"
 namespace Ui {
 class MainWindow;
 }
@@ -20,6 +21,7 @@ public:
  public slots:
 
 private:
+    LastRecipe* last_manager;
     SearchForm* search;
     LastRepform* last_rep;
     Ui::MainWindow *ui;

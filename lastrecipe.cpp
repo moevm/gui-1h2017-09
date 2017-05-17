@@ -60,7 +60,6 @@ int LastRecipe::get_cout_lastrecipe(){
 }
 
 void LastRecipe::opened(int i){
-    qDebug() << "opened " << i;
     if(opened_recipe.indexOf(i)!=-1){
          opened_recipe.remove(opened_recipe.indexOf(i));
     }
@@ -79,6 +78,7 @@ void LastRecipe::get_rep(){
 }
 
 LastRecipe::~LastRecipe(){
+   // qDebug() << "Зашел в конструктор";
     update_last();
     for(Recipe * i :lastrecipe)
         delete i;
