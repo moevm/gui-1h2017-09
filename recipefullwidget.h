@@ -1,19 +1,20 @@
 #ifndef RECIPEFULLWIDGET_H
 #define RECIPEFULLWIDGET_H
 
-#include <QWidget>
-#include <recipe.h>
+#include <QFrame>
+#include "recipe.h"
+#include "changerecipeform.h"
 #include <QPixmap>
 namespace Ui {
 class RecipeFullWidget;
 }
 
-class RecipeFullWidget : public QWidget
+class RecipeFullWidget : public QFrame
 {
     Q_OBJECT
 
 public:
-    explicit RecipeFullWidget(Recipe *,QWidget *parent = 0);
+    explicit RecipeFullWidget(Ingredients* ingrname_m,Recipe *,QWidget *parent = 0);
         explicit RecipeFullWidget(QWidget *parent = 0);
     ~RecipeFullWidget();
 public slots:
@@ -25,12 +26,13 @@ public slots:
     void set_txt(QString n);
     void set_id(int);
     void open_widget();
+    void clicked_change();
 signals:
     void push_opened(int);
 
 
 private:
-
+    ChangeRecipeForm * chng;
     QPixmap *pic;
     int id;
     Ui::RecipeFullWidget *ui;

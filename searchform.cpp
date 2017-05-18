@@ -32,7 +32,7 @@ SearchForm::SearchForm(QWidget *parent) :
      connect(ui->Button_search,SIGNAL(clicked()),this,SLOT(clicked_search()));
 }
 
-SearchForm::SearchForm(LastRecipe * last_m,QWidget *parent) :
+SearchForm::SearchForm(Ingredients* ingrname_m,LastRecipe * last_m,QWidget *parent) :
     QFrame(parent),
     ui(new Ui::SearchForm)
 {
@@ -46,9 +46,17 @@ SearchForm::SearchForm(LastRecipe * last_m,QWidget *parent) :
     //связь между списком ингредиентом
     search=new SearchRecipe();
     ingrlist=new Ingredients();
+    ingrlist_manager=ingrname_m;
     connect(ingrlist,SIGNAL(get_ingrs(QString)),this,SLOT(set_name_ingr(QString)));
     connect(this,SIGNAL(get_all_ingr()),ingrlist,SLOT(get_all_ingr()));
+
+    //для рассылки новых игредиентов
+    connect(ingrname_m,SIGNAL(get_ingrs(QString)),this,SLOT(set_name_ingr(QString)));
+
+
     get_all_ingr();
+
+
       //связь между  поиском
      connect(search,SIGNAL(get_found_recipe(Recipe*)),this,SLOT(add_found_rep(Recipe*)));
      connect(this,SIGNAL(select_name(QString)),search,SLOT(set_name(QString)));
@@ -110,7 +118,7 @@ rep_w.clear();
 
 void SearchForm::add_found_rep(Recipe * l){
     rep_w.push_back(new RecipeWidget(l,this));
-    full_rep.push_back(new RecipeFullWidget(l));
+    full_rep.push_back(new RecipeFullWidget(ingrlist_manager,l));
      //связь виджетов
        connect(rep_w.last(),SIGNAL(open_full_widget()),full_rep.last(),SLOT(open_widget()));
 

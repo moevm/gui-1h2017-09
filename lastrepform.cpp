@@ -18,7 +18,7 @@ LastRepform::LastRepform(QWidget *parent) :
 
 void LastRepform::add_last_rep(Recipe * l){
     last_w.push_back(new RecipeWidget(l,this));
-    full_rep.push_back(new RecipeFullWidget(l));
+    full_rep.push_back(new RecipeFullWidget(ingrlist_manager,l));
     //связь виджетов
     connect(last_w.last(),SIGNAL(open_full_widget()),full_rep.last(),SLOT(open_widget()));
 
@@ -28,7 +28,7 @@ void LastRepform::add_last_rep(Recipe * l){
 
 }
 
-LastRepform::LastRepform(LastRecipe * last_m,QWidget *parent):
+LastRepform::LastRepform(Ingredients* ingrname_m,LastRecipe * last_m,QWidget *parent):
     QFrame(parent),
     ui(new Ui::LastRepform)
 {
@@ -36,6 +36,7 @@ LastRepform::LastRepform(LastRecipe * last_m,QWidget *parent):
 
     //инициализация менеджера последних рецептов
     last_manager=last_m;
+    ingrlist_manager=ingrname_m;
 
     lrep=new LastRecipe();
     connect(lrep,SIGNAL(get_last_recipe(Recipe*)),this,SLOT(add_last_rep(Recipe*)));

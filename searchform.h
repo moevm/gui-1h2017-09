@@ -19,7 +19,7 @@ class SearchForm : public QFrame
     Q_OBJECT
 
 public:
-    explicit SearchForm(LastRecipe * last_m,QWidget *parent = 0);
+    explicit SearchForm(Ingredients* ingrname_m, LastRecipe * last_m,QWidget *parent = 0);
     explicit SearchForm(QWidget *parent = 0);
     ~SearchForm();
 public slots:
@@ -38,6 +38,7 @@ signals:
 private:
     LastRecipe * last_manager;
     Ingredients* ingrlist;
+    Ingredients * ingrlist_manager;
     SearchRecipe* search;
     QVector<QCheckBox *> name_ingr;
     QVector<RecipeWidget *> rep_w;

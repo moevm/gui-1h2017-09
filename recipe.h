@@ -29,11 +29,6 @@ public:
     QString get_txt();
     void init_signals();
     int get_time();
-    bool set_name(QString nm);
-    bool set_descr(QString descr);
-    bool set_img(QString img);
-    bool set_text(QString txt);
-    bool set_time(int t);
 
     bool set_descr();
     bool set_img();
@@ -42,7 +37,14 @@ public:
     bool del_recipe();
 
     ~Recipe();
-
+public slots:
+    void set_name(QString nm);
+    void set_descr(QString descr);
+    void set_img(QString img);
+    void set_text(QString txt);
+    void set_time(int t);
+    void set_del_ingr(QString i);
+    void set_add_ingr(QString i);
 
 signals:
     void get_names( QString );

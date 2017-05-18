@@ -3,12 +3,14 @@
 
 #include <QMainWindow>
 #include "recipe.h"
+#include "ingrlist.h"
 #include "searchform.h"
 #include "lastrepform.h"
 #include "lastrecipe.h"
 namespace Ui {
 class MainWindow;
 }
+
 
 class MainWindow : public QMainWindow
 {
@@ -21,6 +23,7 @@ public:
  public slots:
 
 private:
+    Ingredients* ingrlist_manager;
     LastRecipe* last_manager;
     SearchForm* search;
     LastRepform* last_rep;

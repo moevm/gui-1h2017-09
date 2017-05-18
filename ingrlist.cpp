@@ -42,11 +42,10 @@ void Ingredients:: add_ingr(QString name){
             qDebug() << "Error: insert ingr in list inrg\n";
         }else
         {
-            ingr.push_back(name);
+            get_ingrs(name);
+            //ingr.push_back(name);
             qDebug() << "Insert ingr yes\n";
         }
-
-
 }
 void Ingredients::delete_ingr(QString name){
     query.prepare("DELETE FROM Name_ingredients WHERE  name_ingr= :name;");

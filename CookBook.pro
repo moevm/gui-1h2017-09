@@ -37,7 +37,8 @@ SOURCES += main.cpp\
     recipewidget.cpp \
     recipefullwidget.cpp \
     searchform.cpp \
-    lastrepform.cpp
+    lastrepform.cpp \
+    changerecipeform.cpp
 
 HEADERS  += mainwindow.h \
     ingrbase.h \
@@ -52,11 +53,13 @@ HEADERS  += mainwindow.h \
     recipewidget.h \
     recipefullwidget.h \
     searchform.h \
-    lastrepform.h
+    lastrepform.h \
+    changerecipeform.h
 
 
 FORMS    += mainwindow.ui \
     recipewidget.ui \
     recipefullwidget.ui \
     searchform.ui \
-    lastrepform.ui
+    lastrepform.ui \
+    changerecipeform.ui

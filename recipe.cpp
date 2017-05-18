@@ -119,80 +119,108 @@ int Recipe::get_time(){
     return time;
 }
 
-bool Recipe::set_name(QString nm){
-    query.prepare("UPDATE Recipe SET name=:name WHERE id=:id");
-    query.bindValue(":name",nm);
-    query.bindValue(":id",id);
+void Recipe::set_name(QString nm){
+    if(name!=nm)
+    {
+        query.prepare("UPDATE Recipe SET name=:name WHERE id=:id");
+        query.bindValue(":name",nm);
+        query.bindValue(":id",id);
 
-    if(nm=="")
-    {
-        return false;
-    }
-    if(!query.exec())
-    {
-        qDebug() << "Error: " << id << "rep set name\n";
-        return false;
-    }else{
-        name=nm;
-        return true;
+            if(nm=="")
+            {
+               // return false;
+            }
+            if(!query.exec())
+            {
+                qDebug() << "Error: " << id << "rep set name\n";
+               // return false;
+            }else{
+                name=nm;
+                get_names(nm);
+              //  return true;
+            }
     }
 }
-bool Recipe::set_descr(QString d){
-    query.prepare("UPDATE Recipe SET description=:descr WHERE id=:id");
-    query.bindValue(":descr",d);
-    query.bindValue(":id",id);
-
-    if(!query.exec())
+void Recipe::set_descr(QString d){
+    if(descr!=d)
     {
-        qDebug() << "Error: " << id << "rep set descr\n";
-        return false;
-    }else{
-        descr=d;
-        return true;
+        query.prepare("UPDATE Recipe SET description=:descr WHERE id=:id");
+        query.bindValue(":descr",d);
+        query.bindValue(":id",id);
+
+        if(!query.exec())
+        {
+            qDebug() << "Error: " << id << "rep set descr\n";
+           // return false;
+        }else{
+            descr=d;
+            get_descrs(d);
+            //return true;
+        }
     }
 }
-bool Recipe::set_img(QString i){
-    query.prepare("UPDATE Recipe SET picture=:img WHERE id=:id");
-    query.bindValue(":img",i);
-    query.bindValue(":id",id);
+void Recipe::set_img(QString i){
+    if(img!=i){
+        query.prepare("UPDATE Recipe SET picture=:img WHERE id=:id");
+        query.bindValue(":img",i);
+        query.bindValue(":id",id);
 
-    if(!query.exec())
-    {
-        qDebug() << "Error: " << id << "rep set img\n";
-        return false;
-    }else{
-        img=i;
-        return true;
+        if(!query.exec())
+        {
+            qDebug() << "Error: " << id << "rep set img\n";
+           // return false;
+        }else{
+            img=i;
+            get_imgs(i);
+            //return true;
+        }
     }
 }
-bool Recipe::set_text(QString t){
-    query.prepare("UPDATE Recipe SET text=:txt WHERE id=:id");
-    query.bindValue(":txt",t);
-    query.bindValue(":id",id);
-
-    if(!query.exec())
+void Recipe::set_text(QString t){
+    if(text!=t)
     {
-        qDebug() << "Error: " << id << "rep set txt\n";
-        return false;
-    }else{
-        text=t;
-        return true;
+        query.prepare("UPDATE Recipe SET text=:txt WHERE id=:id");
+        query.bindValue(":txt",t);
+        query.bindValue(":id",id);
+
+        if(!query.exec())
+        {
+            qDebug() << "Error: " << id << "rep set txt\n";
+          //  return false;
+        }else{
+            text=t;
+            get_txts(t);
+            //return true;
+        }
     }
 }
-bool Recipe::set_time(int t){
-    query.prepare("UPDATE Recipe SET time=:tm WHERE id=:id");
-    query.bindValue(":tm",t);
-    query.bindValue(":id",id);
-
-    if(!query.exec())
+void Recipe::set_time(int t){
+    if(time!=t)
     {
-        qDebug() << "Error: " << id << "rep set time\n";
-        return false;
-    }else{
-        time=t;
-        return true;
+        query.prepare("UPDATE Recipe SET time=:tm WHERE id=:id");
+        query.bindValue(":tm",t);
+        query.bindValue(":id",id);
+
+        if(!query.exec())
+        {
+            qDebug() << "Error: " << id << "rep set time\n";
+           // return false;
+        }else{
+            time=t;
+            get_times(QString::number(t));
+            //return true;
+        }
     }
 }
+
+void Recipe::set_del_ingr(QString i){
+    ingr->delete_ingr(i);
+}
+void Recipe::set_add_ingr(QString i){
+    ingr->add_ingr(i);
+}
+
+
 bool Recipe::set_descr(){
     query.prepare("UPDATE Recipe SET description=NULL WHERE id=:id");
     query.bindValue(":id",id);
