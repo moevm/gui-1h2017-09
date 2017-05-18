@@ -7,6 +7,9 @@
 #include "searchform.h"
 #include "lastrepform.h"
 #include "lastrecipe.h"
+#include "newrecipeform.h"
+#include "dataprocessing.h"
+
 namespace Ui {
 class MainWindow;
 }
@@ -17,6 +20,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+        NewRecipeform* new_rep;
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 

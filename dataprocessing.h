@@ -5,20 +5,33 @@
 #include <QObject>
 #include <QVector>
 #include "mainwindow.h"
+#include "recipe.h"
 
 class dataProcessing : public QObject
 {
     Q_OBJECT
 public:
-    explicit dataProcessing(QObject *parent = 0);
-    explicit dataProcessing(MainWindow * w,QObject *parent);
+    dataProcessing(QObject *parent = 0);
+
     ~dataProcessing();
      void start();
 signals:
 
 public slots:
+     void set_name(QString nm);
+     void set_descr(QString descr);
+
+     void set_text(QString txt);
+     void set_time(int t);
+     void set_ingr(QString ing);
+     void end_transact();
 
 private :
+     QString name;
+     QString dscr;
+     int time;
+     QString text;
+     QVector<QString> ingr;
    // LastRecipe * last_rep;
 };
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>ChangeRecipeForm</class>
- <widget class="QFrame" name="ChangeRecipeForm">
+ <class>NewRecipeform</class>
+ <widget class="QFrame" name="NewRecipeform">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -142,7 +142,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Сохранить</string>
+    <string>Добавить</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_5">
