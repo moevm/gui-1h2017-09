@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT +=sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -25,9 +26,43 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    first.cpp
+    ingrlist.cpp \
+    ingrrecipe.cpp \
+    ingrsearch.cpp \
+    lastrecipe.cpp \
+    recipe.cpp \
+    searchrecipe.cpp \
+    dataprocessing.cpp \
+    mainwidget.cpp \
+    recipewidget.cpp \
+    recipefullwidget.cpp \
+    searchform.cpp \
+    lastrepform.cpp \
+    changerecipeform.cpp \
+    newrecipeform.cpp
 
 HEADERS  += mainwindow.h \
-    first.h
+    ingrbase.h \
+    ingrlist.h \
+    ingrrecipe.h \
+    ingrsearch.h \
+    lastrecipe.h \
+    recipe.h \
+    searchrecipe.h \
+    dataprocessing.h \
+    mainwidget.h \
+    recipewidget.h \
+    recipefullwidget.h \
+    searchform.h \
+    lastrepform.h \
+    changerecipeform.h \
+    newrecipeform.h
 
-FORMS    += mainwindow.ui
+
+FORMS    += mainwindow.ui \
+    recipewidget.ui \
+    recipefullwidget.ui \
+    searchform.ui \
+    lastrepform.ui \
+    changerecipeform.ui \
+    newrecipeform.ui
